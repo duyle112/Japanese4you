@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hoangduy.japanese4you.fragments.VocabularyFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tvMeaningTitle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#DDDDDD"
+        android:gravity="center"
+        android:text="MEANING"
+        android:textColor="@color/colorToolbarBg"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tvMeaning"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvMeaningTitle"
+        android:gravity="center"
+        android:text="above,up"
+        android:textColor="@android:color/black"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/tvReadingTitle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvMeaning"
+        android:background="#DDDDDD"
+        android:gravity="center"
+        android:text="HOW TO READ"
+        android:textColor="@color/colorToolbarBg"
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:id="@+id/LnLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvReadingTitle">
+
+        <TextView
+            android:gravity="center"
+            android:text="Kunjomi"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:text="Onyomi"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/LnLayout">
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:text="jou,shou,shan"
+            android:id="@+id/tvKunjomi"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="15sp" />
+
+        <TextView
+            android:gravity="center_horizontal"
+            android:id="@+id/tvOnyomi"
+            android:textColor="@android:color/black"
+            android:text=" ue, -ue, uwa-, kami, a.geru, -a.geru, a.garu, -a.garu, a.gari, -a.gari, nobo.ru, nobo.ri, nobo.seru, nobo.su, tatematsu.ru"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</RelativeLayout>

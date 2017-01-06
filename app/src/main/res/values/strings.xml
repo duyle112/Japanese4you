@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Japanese4You</string>
+    <string name="menu_title">Title</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tutorial_description">Learn about Vocabulary</string>
+    <string-array name="categories">
+        <item>N5 Basic</item>
+        <item>N5 Kanji</item>
+        <item>N5 Grammar</item>
+        <item>N5 Reading</item>
+    </string-array>
+    <string name="skip_tutorial">Skip</string>
 </resources>
