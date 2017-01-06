@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
-import com.example.hoangduy.japanese4you.fragments.ListLessonFragment;
+import com.example.hoangduy.japanese4you.fragments.ListLessonFragment_;
 
 /**
  * Created by HoangDuy on 05/01/2017.
@@ -24,17 +24,17 @@ public class JLPTLevelAdapter extends FragmentStatePagerAdapter {
         Log.i("POS", position + "");
         switch (position) {
             case 0:
-                return new ListLessonFragment();
+                return  ListLessonFragment_.builder().build();
             case 1:
-                return new ListLessonFragment();
+                return ListLessonFragment_.builder().build();
             case 2:
-                return new ListLessonFragment();
+                return ListLessonFragment_.builder().build();
             case 3:
-                return new ListLessonFragment();
+                return ListLessonFragment_.builder().build();
             case 4:
-                return new ListLessonFragment();
+                return ListLessonFragment_.builder().build();
         }
-        return null;
+        return  ListLessonFragment_.builder().build();
     }
 
     @Override

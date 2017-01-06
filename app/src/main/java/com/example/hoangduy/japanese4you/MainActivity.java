@@ -14,9 +14,11 @@ import android.view.View;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.example.hoangduy.japanese4you.adapters.ContentAdapter;
+import com.example.hoangduy.japanese4you.fragments.FavFragment;
 import com.example.hoangduy.japanese4you.fragments.ListVocabularyFragment;
 import com.example.hoangduy.japanese4you.fragments.ListVocabularyFragment_;
 import com.example.hoangduy.japanese4you.fragments.QuestionFragment;
+import com.example.hoangduy.japanese4you.fragments.SettingsFragment;
 import com.example.hoangduy.japanese4you.models.Section;
 
 import org.androidannotations.annotations.AfterViews;
@@ -56,13 +58,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         mViewpager.setAdapter(new ContentAdapter(getSupportFragmentManager()));
-        mViewpager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                mViewpager.onTouchEvent(event);
-                return false;
-            }
-        });
         mTabs.setViewPager(mViewpager);
         mTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -75,12 +70,20 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("position", position + "");
                 switch (position) {
                     case 0:
-                        ListVocabularyFragment listVocabularyFragment = new ListVocabularyFragment_().builder().build();
+                        ListVocabularyFragment listVocabularyFragment = ListVocabularyFragment_.builder().build();
                         fragmentManager.beginTransaction().replace(R.id.flContainer,listVocabularyFragment).commit();
                         break;
                     case 1:
                         QuestionFragment questionFragment = new QuestionFragment();
                         fragmentManager.beginTransaction().replace(R.id.flContainer,questionFragment).commit();
+                        break;
+                    case 2:
+                        FavFragment favFragment = new FavFragment();
+                        fragmentManager.beginTransaction().replace(R.id.flContainer,favFragment).commit();
+                        break;
+                    case 3:
+                        SettingsFragment settingsFragment= new SettingsFragment();
+                        fragmentManager.beginTransaction().replace(R.id.flContainer,settingsFragment).commit();
                         break;
                 }
             }

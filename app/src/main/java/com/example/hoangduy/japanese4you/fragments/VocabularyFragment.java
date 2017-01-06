@@ -1,27 +1,54 @@
 package com.example.hoangduy.japanese4you.fragments;
 
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
-import com.example.hoangduy.japanese4you.models.Word;
+import com.example.hoangduy.japanese4you.adapters.ExampleAdapter;
+import com.example.hoangduy.japanese4you.decorations.GridViewDecoration;
+import com.example.hoangduy.japanese4you.models.Sentences;
+
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
+import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link VocabularyFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link VocabularyFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+@EFragment(R.layout.fragment_vocabulary)
 public class VocabularyFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
+
+
+    @ViewById(R.id.tvRoman)
+    TextView mTvRoman;
+
+    @ViewById(R.id.tvHira)
+    TextView mTvHira;
+
+    @ViewById(R.id.tvType)
+    TextView mTvType;
+
+    @ViewById(R.id.tvMeaning)
+    TextView mTvMeaning;
+
+    @ViewById(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+
+    @FragmentArg("sentences")
+    ArrayList<Sentences> mSentences;
+
+    private RecyclerView.Adapter mAdapter;
+
+    @AfterViews
+    public void init() {
+        mAdapter = new ExampleAdapter(mSentences);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new GridViewDecoration(20));
+    }
 
     private OnFragmentInteractionListener mListener;
 
@@ -30,34 +57,13 @@ public class VocabularyFragment extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
-    public static VocabularyFragment newInstance(ArrayList<Word> words) {
-        VocabularyFragment fragment = new VocabularyFragment();
-        Bundle args = new Bundle();
-        args.putParcelableArrayList(ARG_PARAM1, words);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_vocabulary, container, false);
-    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+
 
 //    @Override
 //    public void onAttach(Context context) {

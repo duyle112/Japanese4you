@@ -7,4 +7,9 @@
     <dimen name="activity_tutorial_description_fontsize">20sp</dimen>
     <dimen name="activity_tutorial_viewpager_marginBot">40dp</dimen>
     <dimen name="fragment_typetut_image_height">200dp</dimen>
+    <dimen name="activity_vocaDetail_text_fontsize">25sp</dimen>
+    <dimen name="activity_vocaDetail_textTitle_fontsize">30sp</dimen>
+    <dimen name="activity_vocaDetail_texttypeandMeaning_fontsize">20sp</dimen>
+    <dimen name="row_vocabulary_title">21sp</dimen>
+    <dimen name="cardview_height">100dp</dimen>
 </resources>

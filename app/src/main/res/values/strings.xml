@@ -12,4 +12,75 @@
         <item>N5 Reading</item>
     </string-array>
     <string name="skip_tutorial">Skip</string>
+    <string name="activity_vocaDetail_textKana_name">Kana:  </string>
+    <string name="activity_vocaDetail_textRomanji_name">Romanji:   </string>
+    <string name="activity_vocaDetail_textMeaningandType_name">Type and Meaning</string>
+    <string name="activity_vocaDetail_textExample_name">Examples</string>
+    <string name="activity_vocaDetail_textType_name">Type</string>
+    <string name="activity_vocaDetail_textMeaning_name">Meaning</string>
+    <string-array name="lessonsVoca">
+        <item>Learn JLPT N5 Vocabulary: 右 (migi)</item>
+        <item>Learn JLPT N5 Vocabulary: 夜 (yoru)</item>
+        <item>Learn JLPT N5 Vocabulary: 取る (toru)</item>
+        <item>Learn JLPT N5 Vocabulary: 止まる (tomaru)</item>
+        <item>Learn JLPT N5 Vocabulary: 狭い (semai)</item>
+        <item>Learn JLPT N5 Vocabulary: 左 (hidari)</item>
+        <item>Learn JLPT N5 Vocabulary: 辺 (hen)</item>
+        <item>Learn JLPT N5 Vocabulary: 熱い (atsui)</item>
+        <item>Learn JLPT N5 Vocabulary: 飛ぶ (tobu)</item>
+        <item>Learn JLPT N5 Vocabulary: 立つ (tatsu)</item>
+    </string-array>
+
+    <string-array name="lessonsVoca1">
+        <item>Learn JLPT N4 Vocabulary: 右 (migi)</item>
+        <item>Learn JLPT N4 Vocabulary: 夜 (yoru)</item>
+        <item>Learn JLPT N4 Vocabulary: 取る (toru)</item>
+        <item>Learn JLPT N4 Vocabulary: 止まる (tomaru)</item>
+        <item>Learn JLPT N4 Vocabulary: 狭い (semai)</item>
+        <item>Learn JLPT N4 Vocabulary: 左 (hidari)</item>
+        <item>Learn JLPT N4 Vocabulary: 辺 (hen)</item>
+        <item>Learn JLPT N4 Vocabulary: 熱い (atsui)</item>
+        <item>Learn JLPT N4 Vocabulary: 飛ぶ (tobu)</item>
+        <item>Learn JLPT N4 Vocabulary: 立つ (tatsu)</item>
+    </string-array>
+
+    <string-array name="lessonsVoca2">
+        <item>Learn JLPT N3 Vocabulary: 右 (migi)</item>
+        <item>Learn JLPT N3 Vocabulary: 夜 (yoru)</item>
+        <item>Learn JLPT N3 Vocabulary: 取る (toru)</item>
+        <item>Learn JLPT N3 Vocabulary: 止まる (tomaru)</item>
+        <item>Learn JLPT N3 Vocabulary: 狭い (semai)</item>
+        <item>Learn JLPT N3 Vocabulary: 左 (hidari)</item>
+        <item>Learn JLPT N3 Vocabulary: 辺 (hen)</item>
+        <item>Learn JLPT N3 Vocabulary: 熱い (atsui)</item>
+        <item>Learn JLPT N3 Vocabulary: 飛ぶ (tobu)</item>
+        <item>Learn JLPT N3 Vocabulary: 立つ (tatsu)</item>
+    </string-array>
+
+    <string-array name="lessonsVoca3">
+        <item>Learn JLPT N2 Vocabulary: 右 (migi)</item>
+        <item>Learn JLPT N2 Vocabulary: 夜 (yoru)</item>
+        <item>Learn JLPT N2 Vocabulary: 取る (toru)</item>
+        <item>Learn JLPT N2 Vocabulary: 止まる (tomaru)</item>
+        <item>Learn JLPT N2 Vocabulary: 狭い (semai)</item>
+        <item>Learn JLPT N2 Vocabulary: 左 (hidari)</item>
+        <item>Learn JLPT N2 Vocabulary: 辺 (hen)</item>
+        <item>Learn JLPT N2 Vocabulary: 熱い (atsui)</item>
+        <item>Learn JLPT N2 Vocabulary: 飛ぶ (tobu)</item>
+        <item>Learn JLPT N2 Vocabulary: 立つ (tatsu)</item>
+    </string-array>
+
+    <string-array name="lessonsVoca4">
+        <item>Learn JLPT N1 Vocabulary: 右 (migi)</item>
+        <item>Learn JLPT N1 Vocabulary: 夜 (yoru)</item>
+        <item>Learn JLPT N1 Vocabulary: 取る (toru)</item>
+        <item>Learn JLPT N1 Vocabulary: 止まる (tomaru)</item>
+        <item>Learn JLPT N1 Vocabulary: 狭い (semai)</item>
+        <item>Learn JLPT N1 Vocabulary: 左 (hidari)</item>
+        <item>Learn JLPT N1 Vocabulary: 辺 (hen)</item>
+        <item>Learn JLPT N1 Vocabulary: 熱い (atsui)</item>
+        <item>Learn JLPT N1 Vocabulary: 飛ぶ (tobu)</item>
+        <item>Learn JLPT N1 Vocabulary: 立つ (tatsu)</item>
+    </string-array>
+
 </resources>

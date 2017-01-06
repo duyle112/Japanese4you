@@ -2,7 +2,6 @@ package com.example.hoangduy.japanese4you.decorations;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -21,7 +20,6 @@ public class GridViewDecoration extends RecyclerView.ItemDecoration {
         outRect.left = mSpace;
         outRect.right = mSpace;
         outRect.bottom = mSpace;
-        Log.i("left", outRect.left + " " + outRect.right + " " + outRect.bottom+" "+outRect.height()+" "+outRect.width());
         if (parent.getChildLayoutPosition(view) == 0 || parent.getChildLayoutPosition(view) == 1) {
             outRect.top = mSpace;
         } else {

@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hoangduy.japanese4you.fragments.ListLessonFragment">
+    tools:context="com.example.hoangduy.japanese4you.fragments.FavFragment">
 
     <!-- TODO: Update blank fragment layout -->
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/lessonRecyclerView"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

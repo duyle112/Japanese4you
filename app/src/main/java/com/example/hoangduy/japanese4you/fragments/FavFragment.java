@@ -3,37 +3,33 @@ package com.example.hoangduy.japanese4you.fragments;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.hoangduy.japanese4you.R;
-import com.example.hoangduy.japanese4you.decorations.GridViewDecoration;
-import com.example.hoangduy.japanese4you.models.Word;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WordsFragment.OnFragmentInteractionListener} interface
+ * {@link FavFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link WordsFragment#newInstance} factory method to
+ * Use the {@link FavFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WordsFragment extends Fragment {
+public class FavFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private RecyclerView mWordRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private ArrayList<Word> mWords;
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
     private OnFragmentInteractionListener mListener;
 
-    public WordsFragment() {
+    public FavFragment() {
         // Required empty public constructor
     }
 
@@ -41,13 +37,16 @@ public class WordsFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment WordsFragment.
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment FavFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static WordsFragment newInstance(ArrayList<Word> words) {
-        WordsFragment fragment = new WordsFragment();
+    public static FavFragment newInstance(String param1, String param2) {
+        FavFragment fragment = new FavFragment();
         Bundle args = new Bundle();
-        args.putParcelableArrayList(ARG_PARAM1, words);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +55,8 @@ public class WordsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mWords = getArguments().getParcelableArrayList(ARG_PARAM1);
-            Log.i("adad", mWords.size() + "");
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -65,13 +64,14 @@ public class WordsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_words, container, false);
-        mWordRecyclerView = (RecyclerView) view.findViewById(R.id.wordsRecyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-        mWordRecyclerView.setLayoutManager(gridLayoutManager);
-        mWordRecyclerView.setAdapter(mAdapter);
-        mWordRecyclerView.addItemDecoration(new GridViewDecoration(10));
-        return view;
+        return inflater.inflate(R.layout.fragment_fav, container, false);
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
     }
 
 //    @Override

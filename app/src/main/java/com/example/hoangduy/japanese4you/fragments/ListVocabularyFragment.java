@@ -1,43 +1,22 @@
 package com.example.hoangduy.japanese4you.fragments;
 
-import android.content.Context;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerTabStrip;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.util.Log;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.example.hoangduy.japanese4you.R;
-import com.example.hoangduy.japanese4you.adapters.ContentAdapter;
 import com.example.hoangduy.japanese4you.adapters.JLPTLevelAdapter;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ListVocabularyFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ListVocabularyFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 @EFragment(R.layout.fragment_list_vocabulary)
 public class ListVocabularyFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -55,13 +34,30 @@ public class ListVocabularyFragment extends Fragment {
     public void init() {
         mViewPager.setAdapter(new JLPTLevelAdapter(getFragmentManager()));
         mTabs.setViewPager(mViewPager);
-        mViewPager.setOnTouchListener(new View.OnTouchListener() {
+        ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(0).build();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContainerSub, listLessonFragment).commit();
+        mTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                mViewPager.onTouchEvent(event);
-                return false;
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                Log.i("aaa", position + "");
+                ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(position).build();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.flContainerSub, listLessonFragment).commit();
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
+
     }
 
 //    @Override
