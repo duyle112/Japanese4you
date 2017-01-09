@@ -1,9 +1,16 @@
 package com.example.hoangduy.japanese4you.fragments;
 
+import android.content.Context;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.hoangduy.japanese4you.R;
 import com.example.hoangduy.japanese4you.adapters.WordsAdapter;
@@ -35,6 +42,10 @@ public class ListLessonFragment extends Fragment {
 
     @AfterViews
     public void init() {
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
+        img.setVisibility(View.INVISIBLE);
+        final FragmentManager fragmentManager =getFragmentManager();
         String[] strings = new String[]{""};
         switch (mPos) {
             case 0:
@@ -54,11 +65,19 @@ public class ListLessonFragment extends Fragment {
                 break;
         }
         mAdapter = new WordsAdapter(strings);
-        mLayout = new LinearLayoutManager(getContext());
-        mLessonRecycler.setLayoutManager(mLayout);
+        mLessonRecycler.setLayoutManager(new GridLayoutManager(getContext(),2));
         mLessonRecycler.setAdapter(mAdapter);
         mLessonRecycler.addItemDecoration(new GridViewDecoration(20));
+        final String[] finalStrings = strings;
+        mLessonRecycler.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mLessonRecycler, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                WordDetailFragment wordDetailFragment = WordDetailFragment_.builder().build();
+                fragmentManager.beginTransaction().replace(R.id.flContainerSub,wordDetailFragment).addToBackStack(null).commit();
+            }
+        }));
     }
+
 
 //    @Override
 //    public void onAttach(Context context) {
@@ -70,6 +89,46 @@ public class ListLessonFragment extends Fragment {
 //                    + " must implement OnFragmentInteractionListener");
 //        }
 //    }
+
+    static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
+
+        private GestureDetector gestureDetector;
+        private ClickListener clickListener;
+
+        public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
+            this.clickListener = clickListener;
+            gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onSingleTapUp(MotionEvent e) {
+                    return true;
+                }
+            });
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+
+            View child = rv.findChildViewUnder(e.getX(), e.getY());
+            if (child != null && clickListener != null && gestureDetector.onTouchEvent(e)) {
+                clickListener.onClick(child, rv.getChildPosition(child));
+            }
+            return false;
+        }
+
+        @Override
+        public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+        }
+
+        @Override
+        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+        }
+
+    }
+
+    interface ClickListener {
+        void onClick(View view, int position);
+    }
 
     @Override
     public void onDetach() {

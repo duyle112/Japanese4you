@@ -2,75 +2,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.hoangduy.japanese4you.fragments.QuestionFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.QuizFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        android:layout_marginTop="@dimen/fragment_question_marginTop"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lnLayout"
+            android:gravity="center"
+            android:text="やまださんはたいていおふろにはいって、_______ ねます。"
+            android:textColor="@android:color/black"
+            android:textSize="25sp" />
+    </android.support.v7.widget.CardView>
+
     <TextView
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="@android:color/black"
-        android:id="@+id/tvQuestion"
+        android:id="@+id/tvAnswerA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="やまださんはたいていおふろにはいって、_______ ねます。" />
-
-    <TextView
-        android:textColor="@android:color/white"
-        android:background="@drawable/myrect"
-        android:id="@+id/tvAnswerA"
-        android:elevation="3dp"
-        android:textSize="20sp"
+        android:layout_below="@+id/cardview"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorToolbarBg"
         android:gravity="center"
         android:text="ちょうど"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/tvQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
     <TextView
-        android:textColor="@android:color/white"
-        android:background="@drawable/myrect"
         android:id="@+id/tvAnswerB"
-        android:elevation="3dp"
-        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAnswerA"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorToolbarBg"
         android:gravity="center"
         android:text="すぐに"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/tvAnswerA"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_height="wrap_content" />
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
     <TextView
-        android:textColor="@android:color/white"
-        android:background="@drawable/myrect"
         android:id="@+id/tvAnswerC"
-        android:elevation="3dp"
-        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAnswerB"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorToolbarBg"
         android:gravity="center"
         android:text="まだ"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/tvAnswerB"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
     <TextView
-        android:textColor="@android:color/white"
-        android:background="@drawable/myrect"
         android:id="@+id/tvAnswerD"
-        android:elevation="3dp"
-        android:textSize="20sp"
-        android:gravity="center"
-        android:text="だんだん"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvAnswerC"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/tvAnswerC"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:background="@color/colorToolbarBg"
+        android:gravity="center"
+        android:text="だんだん"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
 </RelativeLayout>

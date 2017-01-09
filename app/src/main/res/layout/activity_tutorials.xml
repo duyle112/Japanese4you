@@ -47,7 +47,7 @@
         android:id="@+id/indicator"
         app:ci_drawable="@color/colorToolbarBg"
         android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_height="@dimen/activity_tutorial_indicator_height" />
 
 
 

@@ -1,31 +1,99 @@
 package com.example.hoangduy.japanese4you.fragments;
 
-import android.net.Uri;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.example.hoangduy.japanese4you.MainActivity;
 import com.example.hoangduy.japanese4you.R;
+import com.example.hoangduy.japanese4you.models.Quiz;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link QuestionFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link QuestionFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
+import org.androidannotations.annotations.ViewById;
+
+
+@EFragment(R.layout.fragment_question)
 public class QuestionFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    @ViewById(R.id.tvQuestion)
+    TextView mTvQuestion;
+    @ViewById(R.id.tvAnswerA)
+    TextView mTvAnswerA;
+    @ViewById(R.id.tvAnswerB)
+    TextView mTvAnswerB;
+    @ViewById(R.id.tvAnswerC)
+    TextView mTvAnswerC;
+    @ViewById(R.id.tvAnswerD)
+    TextView mTvAnswerD;
+    @FragmentArg("quiz")
+    Quiz mQuiz;
+    @FragmentArg("pos")
+    int mPos;
+
+    @Click(R.id.tvAnswerA)
+    void choiceAnswerA() {
+        mTvAnswerA.setBackgroundResource(android.R.color.holo_green_light);
+        mListener.onFragmentInteraction(mPos,0);
+    }
+
+    @Click(R.id.tvAnswerB)
+    void choiceAnswerB() {
+        mTvAnswerB.setBackgroundResource(android.R.color.holo_green_light);
+        mListener.onFragmentInteraction(mPos,1);
+    }
+
+    @Click(R.id.tvAnswerC)
+    void choiceAnswerC() {
+        mTvAnswerC.setBackgroundResource(android.R.color.holo_green_light);
+        mListener.onFragmentInteraction(mPos,2);
+    }
+
+    @Click(R.id.tvAnswerD)
+    void choiceAnswerD() {
+        mTvAnswerD.setBackgroundResource(android.R.color.holo_green_light);
+        mListener.onFragmentInteraction(mPos,3);
+    }
+
+    @AfterViews
+    void init() {
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
+        TextView textview = (TextView) toolbar.findViewById(R.id.tvTitle);
+        // img.setVisibility(View.VISIBLE);
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+                Log.i("question","question");
+            }
+        });
+        mListener = (MainActivity) getContext();
+        mTvQuestion.setText(mQuiz.getQuestion());
+        mTvAnswerA.setText(mQuiz.getAnswerA());
+        mTvAnswerB.setText(mQuiz.getAnswerB());
+        mTvAnswerC.setText(mQuiz.getAnswerC());
+        mTvAnswerD.setText(mQuiz.getAnswerD());
+        switch (mQuiz.getChoosenQuestion()) {
+            case 0:
+                mTvAnswerA.setBackgroundResource(android.R.color.holo_green_light);
+                break;
+            case 1:
+                mTvAnswerB.setBackgroundResource(android.R.color.holo_green_light);
+                break;
+            case 2:
+                mTvAnswerC.setBackgroundResource(android.R.color.holo_green_light);
+                break;
+            case 3:
+                mTvAnswerD.setBackgroundResource(android.R.color.holo_green_light);
+                break;
+        }
+    }
 
     private OnFragmentInteractionListener mListener;
 
@@ -33,46 +101,6 @@ public class QuestionFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuestionFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuestionFragment newInstance(String param1, String param2) {
-        QuestionFragment fragment = new QuestionFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
 
 //    @Override
 //    public void onAttach(Context context) {
@@ -103,6 +131,6 @@ public class QuestionFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int position, int choice);
     }
 }

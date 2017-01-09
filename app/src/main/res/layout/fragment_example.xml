@@ -8,12 +8,12 @@
     <TextView
         android:id="@+id/tvExample"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/fragment_example_tvHeight"
         android:background="#DDDDDD"
         android:gravity="center"
-        android:text="EXAMPLE SENTENCES"
+        android:text="@string/fragment_example_text"
         android:textColor="@color/colorToolbarBg"
-        android:textSize="25sp" />
+        android:textSize="@dimen/fragment_questtion_tvTimeleft_fontsize" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/exampleRecyclerView"
         android:layout_below="@+id/tvExample"

@@ -7,4 +7,27 @@
     android:background="@color/colorToolbarBg"
     android:minHeight="?attr/actionBarSize"
     local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:id="@+id/imgBack"
+            android:src="@drawable/ic_arrow_back_green_a700_24dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:textColor="@android:color/white"
+            android:layout_weight="4"
+            android:textSize="@dimen/activity_vocaDetail_text_fontsize"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+</android.support.v7.widget.Toolbar>

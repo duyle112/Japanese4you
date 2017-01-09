@@ -1,79 +1,66 @@
 package com.example.hoangduy.japanese4you.fragments;
 
 import android.net.Uri;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
+import com.example.hoangduy.japanese4you.adapters.ExerciseAdapter;
+import com.example.hoangduy.japanese4you.decorations.GridViewDecoration;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 
-@EFragment(R.layout.fragment_list_vocabulary)
-public class ListVocabularyFragment extends Fragment {
+@EFragment(R.layout.fragment_exercise)
+public class ExerciseFragment extends Fragment {
 
+    @ViewById(R.id.ExerciseRecyclerView)
+    RecyclerView mRecyclerView;
+
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayout;
     private OnFragmentInteractionListener mListener;
-
-    public ListVocabularyFragment() {
-        // Required empty public constructor
-    }
-
-    @ViewById(R.id.viewpager)
-    ViewPager mViewPager;
-
-    @ViewById(R.id.tabLayout)
-    TabLayout mTabLayout;
 
     @AfterViews
     public void init() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
         TextView textview = (TextView) toolbar.findViewById(R.id.tvTitle);
-        textview.setText("Vocabulary");
-        img.setVisibility(View.INVISIBLE);
-        onCreateTabLayout();
-        ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(0).build();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContainerSub, listLessonFragment).commit();
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        textview.setText("Exercise");
+        img.setVisibility(View.VISIBLE);
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(tab.getPosition()).build();
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.flContainerSub, listLessonFragment).commit();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
-
+        String[] exercises = {"Vocabulary Exercise 01", "Vocabulary Exercise 02",
+                "Vocabulary Exercise 03", "Vocabulary Exercise 04",
+                "Vocabulary Exercise 05", "Vocabulary Exercise 06", "Vocabulary Exercise 07",
+                "Vocabulary Exercise 08", "Vocabulary Exercise 09", "Vocabulary Exercise 010", "Vocabulary Exercise 01", "Vocabulary Exercise 02",
+                "Vocabulary Exercise 03", "Vocabulary Exercise 04",
+                "Vocabulary Exercise 05", "Vocabulary Exercise 06", "Vocabulary Exercise 07",
+                "Vocabulary Exercise 08", "Vocabulary Exercise 09", "Vocabulary Exercise 010"};
+        mAdapter = new ExerciseAdapter(exercises);
+        mLayout = new LinearLayoutManager(getContext());
+        mRecyclerView.setLayoutManager(mLayout);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new GridViewDecoration(20));
     }
 
-    private void onCreateTabLayout() {
-        mTabLayout.addTab(mTabLayout.newTab().setText("N5"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N4"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N3"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N2"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N1"));
+    public ExerciseFragment() {
+        // Required empty public constructor
     }
 
 
-    //    @Override
+//    @Override
 //    public void onAttach(Context context) {
 //        super.onAttach(context);
 //        if (context instanceof OnFragmentInteractionListener) {

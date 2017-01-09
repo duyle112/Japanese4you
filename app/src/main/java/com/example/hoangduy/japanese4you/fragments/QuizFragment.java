@@ -3,77 +3,84 @@ package com.example.hoangduy.japanese4you.fragments;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
+import com.example.hoangduy.japanese4you.adapters.QuizAdapter;
+import com.example.hoangduy.japanese4you.models.Quiz;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.ArrayList;
 
-@EFragment(R.layout.fragment_list_vocabulary)
-public class ListVocabularyFragment extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
-
-    public ListVocabularyFragment() {
-        // Required empty public constructor
-    }
+@EFragment(R.layout.fragment_quiz)
+public class QuizFragment extends Fragment {
 
     @ViewById(R.id.viewpager)
     ViewPager mViewPager;
 
     @ViewById(R.id.tabLayout)
-    TabLayout mTabLayout;
+    TabLayout mTabs;
+
+    private QuizAdapter mAdapter;
+    @FragmentArg("quiz")
+    ArrayList<Quiz> mQuizes;
+
+    @FragmentArg("pos")
+    int mPos;
 
     @AfterViews
     public void init() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
-        TextView textview = (TextView) toolbar.findViewById(R.id.tvTitle);
-        textview.setText("Vocabulary");
-        img.setVisibility(View.INVISIBLE);
-        onCreateTabLayout();
-        ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(0).build();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContainerSub, listLessonFragment).commit();
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        img.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(tab.getPosition()).build();
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.flContainerSub, listLessonFragment).commit();
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+            public void onClick(View v) {
+                getActivity().onBackPressed();
             }
         });
-
+        mAdapter = new QuizAdapter(getFragmentManager(), mQuizes);
+        mViewPager.setAdapter(mAdapter);
+        mViewPager.setCurrentItem(mPos);
+        mTabs.setupWithViewPager(mViewPager);
+        for (int i = 0; i < 10; i++) {
+            if (mQuizes.get(i).getChoosenQuestion() != 5) {
+                mTabs.getTabAt(i).setCustomView(update((i + 1) + ""));
+            } else {
+                mTabs.getTabAt(i).setCustomView(getTabView((i + 1) + ""));
+            }
+        }
     }
 
-    private void onCreateTabLayout() {
-        mTabLayout.addTab(mTabLayout.newTab().setText("N5"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N4"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N3"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N2"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("N1"));
+    public View update(String title) {
+        TextView tvTitle = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_layout, null);
+        tvTitle.setText(title);
+        tvTitle.setTextColor(getResources().getColor(R.color.colorIndicator));
+        return tvTitle;
+    }
+
+    public QuizFragment() {
+        // Required empty public constructor
+    }
+
+    public View getTabView(String title) {
+        TextView tvTitle = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_layout, null);
+        tvTitle.setBackgroundResource(R.color.colorToolbarBg);
+        tvTitle.setText(title);
+        return tvTitle;
     }
 
 
-    //    @Override
+//    @Override
 //    public void onAttach(Context context) {
 //        super.onAttach(context);
 //        if (context instanceof OnFragmentInteractionListener) {
@@ -87,7 +94,6 @@ public class ListVocabularyFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     /**

@@ -6,4 +6,5 @@
     <color name="colorToolbarBg">#FF6600</color>
     <color name="colorCardView">#FFCC66</color>
     <color name="colorBackgroundText">#DDDDDD</color>
+    <color name="colorIndicator">#00EE00</color>
 </resources>

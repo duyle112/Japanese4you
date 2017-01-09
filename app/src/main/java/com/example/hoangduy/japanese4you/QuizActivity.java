@@ -3,8 +3,6 @@ package com.example.hoangduy.japanese4you;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.hoangduy.japanese4you.adapters.QuizAdapter;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
@@ -20,8 +18,8 @@ public class QuizActivity extends AppCompatActivity {
 
     @AfterViews
     public void init() {
-        mViewPager.setAdapter(new QuizAdapter(getSupportFragmentManager()));
-        mIndicator.setViewPager(mViewPager);
+        //mViewPager.setAdapter(new QuizAdapter(getSupportFragmentManager()));
+       // mIndicator.setViewPager(mViewPager);
     }
 
 }

@@ -8,8 +8,27 @@
     <dimen name="activity_tutorial_viewpager_marginBot">40dp</dimen>
     <dimen name="fragment_typetut_image_height">200dp</dimen>
     <dimen name="activity_vocaDetail_text_fontsize">25sp</dimen>
-    <dimen name="activity_vocaDetail_textTitle_fontsize">30sp</dimen>
-    <dimen name="activity_vocaDetail_texttypeandMeaning_fontsize">20sp</dimen>
-    <dimen name="row_vocabulary_title">21sp</dimen>
+    <dimen name="activity_vocaDetail_textTitle_fontsize">25sp</dimen>
+    <dimen name="activity_vocaDetail_texttypeandMeaning_fontsize">15sp</dimen>
+    <dimen name="row_vocabulary_title">40sp</dimen>
     <dimen name="cardview_height">100dp</dimen>
+    <dimen name="cardview_corner_radius">4dp</dimen>
+    <dimen name="cardview_margin_bot">5dp</dimen>
+    <dimen name="test_fragment_tv_fontsize">20sp</dimen>
+    <dimen name="row_exercise_tvTitle_fontsize">50dp</dimen>
+    <dimen name="row_exercise_tv_padding">3dp</dimen>
+    <dimen name="fragment_question_tvTimeleftTitle_fontsize">20sp</dimen>
+    <dimen name="fragment_questtion_tvTimeleft_fontsize">25sp</dimen>
+    <dimen name="fragment_question_marginTop">20dp</dimen>
+    <dimen name="activity_main_tablayout_height">60dp</dimen>
+    <dimen name="activity_tutorial_indicator_height">48dp</dimen>
+    <dimen name="activity_tutorial_img_width">200dp</dimen>
+    <dimen name="activity_tutorial_img_height">200dp</dimen>
+    <dimen name="fragment_example_tvHeight">30dp</dimen>
+    <dimen name="fragment_quiz_tablayout_height">30dp</dimen>
+
+    <dimen name="row_sentences_tvJapSentence_testSize">20sp</dimen>
+    <dimen name="row_sentences_tvRomajiSentence_testSize">12sp</dimen>
+    <dimen name="row_sentences_tvEngSentence_textSize">15sp</dimen>
+    <dimen name="row_vocabilary_cardCorner">30dp</dimen>
 </resources>

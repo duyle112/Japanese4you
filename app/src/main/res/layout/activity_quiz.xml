@@ -6,20 +6,4 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.hoangduy.japanese4you.QuizActivity">
 
-    <include
-        android:id="@id/toolbar"
-        layout="@layout/toolbar"
-        />
-    <me.relex.circleindicator.CircleIndicator
-        android:layout_below="@id/toolbar"
-        android:id="@+id/indicator"
-        app:ci_drawable="@color/colorToolbarBg"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_below="@+id/indicator"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 </RelativeLayout>

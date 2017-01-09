@@ -1,0 +1,163 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    android:orientation="vertical"
+    tools:context=".fragments.TestFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        android:layout_marginBottom="@dimen/cardview_margin_bot"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/N5basic"
+                android:textColor="@color/colorToolbarBg"
+                android:textSize="@dimen/test_fragment_tv_fontsize" />
+
+            <ImageView
+                android:id="@+id/imgBasicTest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_keyboard_arrow_right_green_700_36dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/cardview_margin_bot"
+        android:layout_weight="1"
+        app:cardCornerRadius="@dimen/cardview_corner_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/N5Kanji"
+                android:textColor="@color/colorToolbarBg"
+                android:textSize="@dimen/test_fragment_tv_fontsize" />
+
+            <ImageView
+                android:id="@+id/imgKanjiTest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_keyboard_arrow_right_green_700_36dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        android:layout_marginBottom="@dimen/cardview_margin_bot"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/N5Grammar"
+                android:textColor="@color/colorToolbarBg"
+                android:textSize="@dimen/test_fragment_tv_fontsize" />
+
+            <ImageView
+                android:id="@+id/imgGrammarTest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_keyboard_arrow_right_green_700_36dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        android:layout_marginBottom="@dimen/cardview_margin_bot"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/N5Reading"
+                android:textColor="@color/colorToolbarBg"
+                android:textSize="@dimen/test_fragment_tv_fontsize" />
+
+            <ImageView
+                android:id="@+id/imgReadingTest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_keyboard_arrow_right_green_700_36dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        app:cardCornerRadius="@dimen/cardview_corner_radius"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="@string/N5Vocabulary"
+                android:textColor="@color/colorToolbarBg"
+                android:textSize="@dimen/test_fragment_tv_fontsize" />
+
+            <ImageView
+                android:id="@+id/imgVocaTest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:src="@drawable/ic_keyboard_arrow_right_green_700_36dp" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

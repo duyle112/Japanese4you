@@ -12,7 +12,7 @@ import com.example.hoangduy.japanese4you.R;
  * Created by HoangDuy on 04/01/2017.
  */
 public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> {
-   String[] mStrs;
+    private String[] mStrs;
 
     public WordsAdapter(String[] strs) {
         mStrs = strs;
@@ -38,7 +38,6 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView mTvLesson;
-
 
         public ViewHolder(View itemView) {
             super(itemView);
