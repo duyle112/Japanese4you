@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,46 +32,63 @@ public class QuestionFragment extends Fragment {
     TextView mTvAnswerC;
     @ViewById(R.id.tvAnswerD)
     TextView mTvAnswerD;
+    @ViewById(R.id.btnSubmit)
+    Button mBtnSubmit;
     @FragmentArg("quiz")
     Quiz mQuiz;
     @FragmentArg("pos")
     int mPos;
+    @FragmentArg
+    boolean mFlag;
+    private static final int COUNT = 9;
+
+
+    @Click(R.id.btnSubmit)
+    void submit() {
+        ResultDialogFragment dialogFragment = new ResultDialogFragment();
+        dialogFragment.show(getActivity().getFragmentManager(), "abc");
+    }
 
     @Click(R.id.tvAnswerA)
     void choiceAnswerA() {
-        mTvAnswerA.setBackgroundResource(android.R.color.holo_green_light);
-        mListener.onFragmentInteraction(mPos,0);
+        mTvAnswerA.setBackgroundResource(R.color.colorChooseAnswer);
+        mListener.onFragmentInteraction(mPos, 0);
+
     }
 
     @Click(R.id.tvAnswerB)
     void choiceAnswerB() {
-        mTvAnswerB.setBackgroundResource(android.R.color.holo_green_light);
-        mListener.onFragmentInteraction(mPos,1);
+        mTvAnswerB.setBackgroundResource(R.color.colorChooseAnswer);
+        mListener.onFragmentInteraction(mPos, 1);
+
     }
 
     @Click(R.id.tvAnswerC)
     void choiceAnswerC() {
-        mTvAnswerC.setBackgroundResource(android.R.color.holo_green_light);
-        mListener.onFragmentInteraction(mPos,2);
+        mTvAnswerC.setBackgroundResource(R.color.colorChooseAnswer);
+        mListener.onFragmentInteraction(mPos, 2);
     }
 
     @Click(R.id.tvAnswerD)
     void choiceAnswerD() {
-        mTvAnswerD.setBackgroundResource(android.R.color.holo_green_light);
-        mListener.onFragmentInteraction(mPos,3);
+        mTvAnswerD.setBackgroundResource(R.color.colorChooseAnswer);
+        mListener.onFragmentInteraction(mPos, 3);
     }
 
     @AfterViews
     void init() {
+        if (mPos == COUNT) {
+            mBtnSubmit.setVisibility(View.VISIBLE);
+        } else {
+            mBtnSubmit.setVisibility(View.GONE);
+        }
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
-        TextView textview = (TextView) toolbar.findViewById(R.id.tvTitle);
-        // img.setVisibility(View.VISIBLE);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getActivity().onBackPressed();
-                Log.i("question","question");
+                Log.i("question", "question");
             }
         });
         mListener = (MainActivity) getContext();
@@ -79,19 +97,43 @@ public class QuestionFragment extends Fragment {
         mTvAnswerB.setText(mQuiz.getAnswerB());
         mTvAnswerC.setText(mQuiz.getAnswerC());
         mTvAnswerD.setText(mQuiz.getAnswerD());
+        setResult();
         switch (mQuiz.getChoosenQuestion()) {
             case 0:
-                mTvAnswerA.setBackgroundResource(android.R.color.holo_green_light);
+                mTvAnswerA.setBackgroundResource(R.color.colorChooseAnswer);
                 break;
             case 1:
-                mTvAnswerB.setBackgroundResource(android.R.color.holo_green_light);
+                mTvAnswerB.setBackgroundResource(R.color.colorChooseAnswer);
                 break;
             case 2:
-                mTvAnswerC.setBackgroundResource(android.R.color.holo_green_light);
+                mTvAnswerC.setBackgroundResource(R.color.colorChooseAnswer);
                 break;
             case 3:
-                mTvAnswerD.setBackgroundResource(android.R.color.holo_green_light);
+                mTvAnswerD.setBackgroundResource(R.color.colorChooseAnswer);
                 break;
+        }
+    }
+
+    public void setResult() {
+        if (mFlag) {
+            mTvAnswerA.setClickable(false);
+            mTvAnswerB.setClickable(false);
+            mTvAnswerC.setClickable(false);
+            mTvAnswerD.setClickable(false);
+            switch (mQuiz.getRightAnswer()) {
+                case 0:
+                    mTvAnswerA.setBackgroundResource(android.R.color.holo_green_light);
+                    break;
+                case 1:
+                    mTvAnswerB.setBackgroundResource(android.R.color.holo_green_light);
+                    break;
+                case 2:
+                    mTvAnswerC.setBackgroundResource(android.R.color.holo_green_light);
+                    break;
+                case 3:
+                    mTvAnswerD.setBackgroundResource(android.R.color.holo_green_light);
+                    break;
+            }
         }
     }
 

@@ -16,15 +16,17 @@ import java.util.List;
 public class QuizAdapter extends FragmentStatePagerAdapter {
     private static final int COUNT = 10;
     private List<Quiz> mQuizes;
+    private boolean mIsSubmit;
 
-    public QuizAdapter(FragmentManager fm, List<Quiz> quizes) {
+    public QuizAdapter(FragmentManager fm, List<Quiz> quizes, boolean isSubmit) {
         super(fm);
         mQuizes = quizes;
+        mIsSubmit = isSubmit;
     }
 
     @Override
     public Fragment getItem(int position) {
-        QuestionFragment questionFragment = QuestionFragment_.builder().mQuiz(mQuizes.get(position)).mPos(position).build();
+        QuestionFragment questionFragment = QuestionFragment_.builder().mQuiz(mQuizes.get(position)).mPos(position).mFlag(mIsSubmit).build();
         return questionFragment;
     }
 

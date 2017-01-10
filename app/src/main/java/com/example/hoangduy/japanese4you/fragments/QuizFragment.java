@@ -1,10 +1,13 @@
 package com.example.hoangduy.japanese4you.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -38,8 +41,16 @@ public class QuizFragment extends Fragment {
     @FragmentArg("pos")
     int mPos;
 
+    @FragmentArg("flag")
+    boolean mIsSubmit;
+
+    private SharedPreferences mSharePreference;
+    public static final String KEY_PREFERENCE = "share";
+    public static final String KEY_FLAG = "flag";
+
     @AfterViews
     public void init() {
+        setFlag();
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
         img.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +59,7 @@ public class QuizFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-        mAdapter = new QuizAdapter(getFragmentManager(), mQuizes);
+        mAdapter = new QuizAdapter(getFragmentManager(), mQuizes,mIsSubmit);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(mPos);
         mTabs.setupWithViewPager(mViewPager);
@@ -59,6 +70,13 @@ public class QuizFragment extends Fragment {
                 mTabs.getTabAt(i).setCustomView(getTabView((i + 1) + ""));
             }
         }
+    }
+
+    public void setFlag(){
+        mSharePreference = getContext().getSharedPreferences(KEY_PREFERENCE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharePreference.edit();
+        editor.putBoolean(KEY_FLAG, true);
+        editor.commit();
     }
 
     public View update(String title) {
@@ -73,6 +91,7 @@ public class QuizFragment extends Fragment {
     }
 
     public View getTabView(String title) {
+        Log.i("update1", "update1");
         TextView tvTitle = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_layout, null);
         tvTitle.setBackgroundResource(R.color.colorToolbarBg);
         tvTitle.setText(title);

@@ -158,4 +158,8 @@
     </string-array>
 
     <string name="fragment_example_text">EXAMPLE SENTENCES</string>
+    <string name="dialog_ext_tvMessage_text">Are you sure you want to exit?</string>
+    <string name="dialog_exit_btnPositive_text">Ok</string>
+    <string name="dialog_exit_btnNegative_text">Cancel</string>
+    <string name="dialog_result_title">Congratulation!!!You did try</string>
 </resources>

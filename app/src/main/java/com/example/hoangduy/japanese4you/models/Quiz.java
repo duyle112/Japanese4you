@@ -6,21 +6,23 @@ import android.os.Parcelable;
 /**
  * Created by HoangDuy on 08/01/2017.
  */
-public class Quiz implements Parcelable{
+public class Quiz implements Parcelable {
     private String question;
     private String answerA;
     private String answerB;
     private String answerC;
     private String answerD;
     private int choosenQuestion;
+    private int rightAnswer;
 
-    public Quiz(String question, String answerA, String answerB, String answerC, String answerD, int choosenQuestion) {
+    public Quiz(String question, String answerA, String answerB, String answerC, String answerD, int choosenQuestion, int rightAnswer) {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.answerD = answerD;
         this.choosenQuestion = choosenQuestion;
+        this.rightAnswer = rightAnswer;
     }
 
     protected Quiz(Parcel in) {
@@ -30,6 +32,7 @@ public class Quiz implements Parcelable{
         answerC = in.readString();
         answerD = in.readString();
         choosenQuestion = in.readInt();
+        rightAnswer = in.readInt();
     }
 
     public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
@@ -92,6 +95,14 @@ public class Quiz implements Parcelable{
         this.choosenQuestion = choosenQuestion;
     }
 
+    public int getRightAnswer() {
+        return rightAnswer;
+    }
+
+    public void setRightAnswer(int rightAnswer) {
+        this.rightAnswer = rightAnswer;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -105,5 +116,6 @@ public class Quiz implements Parcelable{
         dest.writeString(answerC);
         dest.writeString(answerD);
         dest.writeInt(choosenQuestion);
+        dest.writeInt(rightAnswer);
     }
 }

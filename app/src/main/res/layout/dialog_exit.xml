@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorToolbarBg"
+        android:src="@drawable/ic_exit_to_app_green_a700_48dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/dialog_ext_tvMessage_text"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/dialog_exit_tv_fontsize" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <Button
+            android:text="@string/dialog_exit_btnPositive_text"
+            android:textColor="@color/colorToolbarBg"
+            android:id="@+id/btnPositive"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:text="@string/dialog_exit_btnNegative_text"
+            android:textColor="@color/colorToolbarBg"
+            android:id="@+id/btnNegative"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

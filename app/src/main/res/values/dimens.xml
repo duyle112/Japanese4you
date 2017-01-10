@@ -19,7 +19,7 @@
     <dimen name="row_exercise_tv_padding">3dp</dimen>
     <dimen name="fragment_question_tvTimeleftTitle_fontsize">20sp</dimen>
     <dimen name="fragment_questtion_tvTimeleft_fontsize">25sp</dimen>
-    <dimen name="fragment_question_marginTop">20dp</dimen>
+    <dimen name="fragment_question_marginTop">10dp</dimen>
     <dimen name="activity_main_tablayout_height">60dp</dimen>
     <dimen name="activity_tutorial_indicator_height">48dp</dimen>
     <dimen name="activity_tutorial_img_width">200dp</dimen>
@@ -31,4 +31,9 @@
     <dimen name="row_sentences_tvRomajiSentence_testSize">12sp</dimen>
     <dimen name="row_sentences_tvEngSentence_textSize">15sp</dimen>
     <dimen name="row_vocabilary_cardCorner">30dp</dimen>
+    <dimen name="dialog_exit_tv_fontsize">30sp</dimen>
+    <dimen name="row_exercise_cardview_height">70dp</dimen>
+    <dimen name="row_exercise_tvExercise_paddingLeft">7dp</dimen>
+    <dimen name="dialog_result_title_fontsize">15sp</dimen>
+    <dimen name="dialog_result_title_height">50dp</dimen>
 </resources>

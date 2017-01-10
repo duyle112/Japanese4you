@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorBackgroundText"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/tvTitle"
+        android:background="@color/colorToolbarBg"
+        android:gravity="center"
+        android:textSize="@dimen/dialog_result_title_fontsize"
+        android:textColor="@android:color/white"
+        android:text="@string/dialog_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_result_title_height" />
+    <ProgressBar
+        android:layout_below="@+id/tvTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="200dp"
+        android:progress="100"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/style_cicular2"
+        android:max="100"
+        android:layout_height="200dp" />
+
+    <ProgressBar
+        android:layout_below="@+id/tvTitle"
+        android:id="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="200dp"
+        android:progress="70"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/style_circular"
+        android:max="100"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:text="70%"
+        android:id="@+id/tvPercent"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/progressBar"
+        style="@style/dialog_result_tvTitle_styles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="7 of 10 answers"
+        android:layout_centerHorizontal="true"
+        style="@style/dialog_result_tvsubTitle_styles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPercent"
+        />
+</RelativeLayout>
