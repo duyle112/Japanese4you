@@ -14,8 +14,9 @@ public class Quiz implements Parcelable {
     private String answerD;
     private int choosenQuestion;
     private int rightAnswer;
+    private int id;
 
-    public Quiz(String question, String answerA, String answerB, String answerC, String answerD, int choosenQuestion, int rightAnswer) {
+    public Quiz(int id,String question, String answerA, String answerB, String answerC, String answerD, int choosenQuestion, int rightAnswer) {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
@@ -23,6 +24,7 @@ public class Quiz implements Parcelable {
         this.answerD = answerD;
         this.choosenQuestion = choosenQuestion;
         this.rightAnswer = rightAnswer;
+        this.id=id;
     }
 
     protected Quiz(Parcel in) {
@@ -33,6 +35,7 @@ public class Quiz implements Parcelable {
         answerD = in.readString();
         choosenQuestion = in.readInt();
         rightAnswer = in.readInt();
+        id=in.readInt();
     }
 
     public static final Creator<Quiz> CREATOR = new Creator<Quiz>() {
@@ -117,5 +120,6 @@ public class Quiz implements Parcelable {
         dest.writeString(answerD);
         dest.writeInt(choosenQuestion);
         dest.writeInt(rightAnswer);
+        dest.writeInt(id);
     }
 }

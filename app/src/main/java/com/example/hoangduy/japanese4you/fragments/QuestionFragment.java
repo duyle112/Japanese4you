@@ -1,14 +1,14 @@
 package com.example.hoangduy.japanese4you.fragments;
 
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.hoangduy.japanese4you.MainActivity;
 import com.example.hoangduy.japanese4you.R;
 import com.example.hoangduy.japanese4you.models.Quiz;
 
@@ -45,8 +45,7 @@ public class QuestionFragment extends Fragment {
 
     @Click(R.id.btnSubmit)
     void submit() {
-        ResultDialogFragment dialogFragment = new ResultDialogFragment();
-        dialogFragment.show(getActivity().getFragmentManager(), "abc");
+        mListener.onFragmentSubmit();
     }
 
     @Click(R.id.tvAnswerA)
@@ -87,11 +86,9 @@ public class QuestionFragment extends Fragment {
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
-                Log.i("question", "question");
+                showMessage();
             }
         });
-        mListener = (MainActivity) getContext();
         mTvQuestion.setText(mQuiz.getQuestion());
         mTvAnswerA.setText(mQuiz.getAnswerA());
         mTvAnswerB.setText(mQuiz.getAnswerB());
@@ -114,12 +111,43 @@ public class QuestionFragment extends Fragment {
         }
     }
 
+    public void showMessage() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_exit);
+        dialog.setCanceledOnTouchOutside(false);
+        Button btnPositive = (Button) dialog.findViewById(R.id.btnPositive);
+        Button btnNegative = (Button) dialog.findViewById(R.id.btnNegative);
+        btnPositive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                getActivity().onBackPressed();
+            }
+        });
+
+        btnNegative.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+        if (!dialog.isShowing()) {
+            dialog.show();
+        }
+    }
+
+    public void setCallback(OnFragmentInteractionListener listener) {
+        mListener = listener;
+    }
+
     public void setResult() {
         if (mFlag) {
             mTvAnswerA.setClickable(false);
             mTvAnswerB.setClickable(false);
             mTvAnswerC.setClickable(false);
             mTvAnswerD.setClickable(false);
+            mBtnSubmit.setEnabled(false);
             switch (mQuiz.getRightAnswer()) {
                 case 0:
                     mTvAnswerA.setBackgroundResource(android.R.color.holo_green_light);
@@ -174,5 +202,8 @@ public class QuestionFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(int position, int choice);
+
+        void onFragmentSubmit();
+
     }
 }

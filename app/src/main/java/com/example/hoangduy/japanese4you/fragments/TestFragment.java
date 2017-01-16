@@ -9,41 +9,51 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
+import com.example.hoangduy.japanese4you.database.DataHelper;
+import com.example.hoangduy.japanese4you.models.Exercise;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @EFragment(R.layout.fragment_test)
 public class TestFragment extends Fragment {
 
     private FragmentManager mFragmentManager;
+    private static final String TITLE = "Exercise";
+    private DataHelper mDataHelper;
 
     @AfterViews
     public void init() {
+        mDataHelper = new DataHelper(getContext(), "", null, 1);
+        mDataHelper.openDataBase();
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
         TextView textview = (TextView) toolbar.findViewById(R.id.tvTitle);
-        textview.setText("Exercise");
+        textview.setText(TITLE);
         img.setVisibility(View.INVISIBLE);
         mFragmentManager = getFragmentManager();
     }
 
     @Click(R.id.imgBasicTest)
     void doBasicTest() {
-        ExerciseFragment exerciseFragment = ExerciseFragment_.builder().build();
-        mFragmentManager.beginTransaction().replace(R.id.flContainer, exerciseFragment).addToBackStack(null).commit();
+        List<Exercise> exercises = mDataHelper.getAllExercises();
+        ExerciseFragment exerciseFragment = ExerciseFragment_.builder().mExercises((ArrayList<Exercise>) exercises).build();
+        mFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, exerciseFragment).commit();
     }
 
     @Click(R.id.imgKanjiTest)
     void doKanjiTest() {
-
+        goExercise("kanji");
     }
 
     @Click(R.id.imgGrammarTest)
     void doGrammarTest() {
-
+        goExercise("grammar");
     }
 
     @Click(R.id.imgReadingTest)
@@ -56,22 +66,18 @@ public class TestFragment extends Fragment {
 
     }
 
+    public void goExercise(String category) {
+        List<Exercise> exercises = mDataHelper.getExercises(category);
+        ExerciseFragment exerciseFragment = ExerciseFragment_.builder().mExercises((ArrayList<Exercise>) exercises).build();
+        mFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, exerciseFragment).commit();
+    }
+
+
     private OnFragmentInteractionListener mListener;
 
     public TestFragment() {
         // Required empty public constructor
     }
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof OnFragmentInteractionListener) {
-//            mListener = (OnFragmentInteractionListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
 
     @Override
     public void onDetach() {
@@ -79,16 +85,6 @@ public class TestFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);

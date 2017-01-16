@@ -8,14 +8,16 @@ import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
 
+import java.util.List;
+
 /**
  * Created by HoangDuy on 04/01/2017.
  */
 public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> {
-    private String[] mStrs;
+    private List<String> mStringList;
 
-    public WordsAdapter(String[] strs) {
-        mStrs = strs;
+    public WordsAdapter(List<String> stringList) {
+        mStringList = stringList;
     }
 
     @Override
@@ -27,13 +29,13 @@ public class WordsAdapter extends RecyclerView.Adapter<WordsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTvLesson.setText(mStrs[position]);
+        holder.mTvLesson.setText(mStringList.get(position));
 
     }
 
     @Override
     public int getItemCount() {
-        return mStrs.length;
+        return mStringList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

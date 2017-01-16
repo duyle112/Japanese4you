@@ -12,10 +12,14 @@ import android.widget.TextView;
 import com.example.hoangduy.japanese4you.R;
 import com.example.hoangduy.japanese4you.adapters.ExerciseAdapter;
 import com.example.hoangduy.japanese4you.decorations.GridViewDecoration;
+import com.example.hoangduy.japanese4you.models.Exercise;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
 
 
 @EFragment(R.layout.fragment_exercise)
@@ -23,6 +27,9 @@ public class ExerciseFragment extends Fragment {
 
     @ViewById(R.id.ExerciseRecyclerView)
     RecyclerView mRecyclerView;
+
+    @FragmentArg
+    ArrayList<Exercise> mExercises;
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayout;
@@ -41,14 +48,7 @@ public class ExerciseFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
-        String[] exercises = {"Vocabulary Exercise 01", "Vocabulary Exercise 02",
-                "Vocabulary Exercise 03", "Vocabulary Exercise 04",
-                "Vocabulary Exercise 05", "Vocabulary Exercise 06", "Vocabulary Exercise 07",
-                "Vocabulary Exercise 08", "Vocabulary Exercise 09", "Vocabulary Exercise 010", "Vocabulary Exercise 01", "Vocabulary Exercise 02",
-                "Vocabulary Exercise 03", "Vocabulary Exercise 04",
-                "Vocabulary Exercise 05", "Vocabulary Exercise 06", "Vocabulary Exercise 07",
-                "Vocabulary Exercise 08", "Vocabulary Exercise 09", "Vocabulary Exercise 010"};
-        mAdapter = new ExerciseAdapter(exercises);
+        mAdapter = new ExerciseAdapter(getContext(),mExercises);
         mLayout = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayout);
         mRecyclerView.setAdapter(mAdapter);

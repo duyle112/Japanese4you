@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.hoangduy.japanese4you.R;
-import com.example.hoangduy.japanese4you.adapters.ExampleAdapter;
 import com.example.hoangduy.japanese4you.decorations.GridViewDecoration;
 import com.example.hoangduy.japanese4you.models.Sentences;
 
@@ -33,7 +32,7 @@ public class ExampleFragment extends Fragment {
 
     @AfterViews
     public void init() {
-        mAdapter = new ExampleAdapter(mSentences);
+       // mAdapter = new ExampleAdapter(mSentences);
         mLayout = new LinearLayoutManager(getContext());
         mExampleRecyclerView.setLayoutManager(mLayout);
         mExampleRecyclerView.setAdapter(mAdapter);

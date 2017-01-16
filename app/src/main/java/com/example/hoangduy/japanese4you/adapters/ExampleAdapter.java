@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
-import com.example.hoangduy.japanese4you.models.Sentences;
+import com.example.hoangduy.japanese4you.models.Example;
 
 import java.util.ArrayList;
 
@@ -15,9 +15,9 @@ import java.util.ArrayList;
  * Created by HoangDuy on 04/01/2017.
  */
 public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHolder> {
-    private ArrayList<Sentences> mSentences;
+    private ArrayList<Example> mSentences;
 
-    public ExampleAdapter(ArrayList<Sentences> sentences) {
+    public ExampleAdapter(ArrayList<Example> sentences) {
         mSentences = sentences;
     }
 
@@ -30,9 +30,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.mTvJapSentences.setText(mSentences.get(position).getJapaneseSen());
-        holder.mTvEngSentences.setText(mSentences.get(position).getEnglishSen());
-        holder.mTvRomajiSentences.setText(mSentences.get(position).getRomanjiSen());
+        holder.mTvJapSentences.setText(mSentences.get(position).getJapsentence());
+        holder.mTvEngSentences.setText(mSentences.get(position).getEngsentence());
+        holder.mTvRomajiSentences.setText(mSentences.get(position).getRomanjisentence());
     }
 
     @Override

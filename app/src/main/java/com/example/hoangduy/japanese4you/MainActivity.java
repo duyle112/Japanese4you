@@ -1,7 +1,6 @@
 package com.example.hoangduy.japanese4you;
 
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,25 +8,25 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.adapters.ExerciseAdapter;
+import com.example.hoangduy.japanese4you.database.DataHelper;
 import com.example.hoangduy.japanese4you.fragments.FavFragment;
+import com.example.hoangduy.japanese4you.fragments.FavFragment_;
 import com.example.hoangduy.japanese4you.fragments.ListVocabularyFragment;
 import com.example.hoangduy.japanese4you.fragments.ListVocabularyFragment_;
-import com.example.hoangduy.japanese4you.fragments.QuestionFragment;
 import com.example.hoangduy.japanese4you.fragments.QuizFragment;
 import com.example.hoangduy.japanese4you.fragments.QuizFragment_;
-import com.example.hoangduy.japanese4you.fragments.ResultDialogFragment;
 import com.example.hoangduy.japanese4you.fragments.SettingsFragment;
 import com.example.hoangduy.japanese4you.fragments.TestFragment;
 import com.example.hoangduy.japanese4you.fragments.TestFragment_;
 import com.example.hoangduy.japanese4you.models.Quiz;
 import com.example.hoangduy.japanese4you.models.Section;
+import com.example.hoangduy.japanese4you.models.Word;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -39,11 +38,10 @@ import java.util.List;
 
 @EActivity(R.layout.activity_main)
 @OptionsMenu(R.menu.menu_main)
-public class MainActivity extends AppCompatActivity implements ExerciseAdapter.onFragmentTransaction
-        , QuestionFragment.OnFragmentInteractionListener, ResultDialogFragment.DialogListener {
+public class MainActivity extends AppCompatActivity implements ExerciseAdapter.onFragmentTransaction {
 
     private List<Section> mSections;
-    ArrayList<Quiz> quizes;
+    ArrayList<Quiz> mQuizes;
     @ViewById(R.id.toolbar)
     Toolbar mToolbar;
 
@@ -57,9 +55,12 @@ public class MainActivity extends AppCompatActivity implements ExerciseAdapter.o
     private FragmentManager mFragmentManager;
     private SharedPreferences mSharePreference;
     private boolean isCancel;
+    private DataHelper mDataHelper;
 
     @AfterViews
     public void init() {
+        mDataHelper = new DataHelper(this, "", null, 1);
+        mDataHelper.openDataBase();
         isCancel = false;
         setFlag();
         mFragmentManager = getSupportFragmentManager();
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseAdapter.o
     public void setTabView(int position) {
         switch (position) {
             case 0:
+                List<Word> words = mDataHelper.getWords();
                 ListVocabularyFragment listVocabularyFragment = ListVocabularyFragment_.builder().build();
                 loadFragment(listVocabularyFragment, checkFlag());
                 break;
@@ -108,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements ExerciseAdapter.o
                 loadFragment(testFragment, checkFlag());
                 break;
             case 2:
-                FavFragment favFragment = new FavFragment();
+                FavFragment favFragment = FavFragment_.builder().build();
                 loadFragment(favFragment, checkFlag());
                 break;
             case 3:
@@ -180,18 +182,10 @@ public class MainActivity extends AppCompatActivity implements ExerciseAdapter.o
     }
 
     @Override
-    public void onReadmore(int id) {
-        quizes = new ArrayList<>();
-        String[] questions = getResources().getStringArray(R.array.questions);
-        String[] answerA = getResources().getStringArray(R.array.answerA);
-        String[] answerB = getResources().getStringArray(R.array.answerB);
-        String[] answerC = getResources().getStringArray(R.array.answerC);
-        String[] answerD = getResources().getStringArray(R.array.answerD);
-        for (int i = 0; i < 10; i++) {
-            quizes.add(new Quiz(questions[i], answerA[i], answerB[i], answerC[i], answerD[i], 5, i % 4));
-        }
-        QuizFragment quizFragment = QuizFragment_.builder().mQuizes(quizes).mPos(0).build();
-        mFragmentManager.beginTransaction().replace(R.id.flContainer, quizFragment).addToBackStack(null).commit();
+    public void onReadmore(String category, int group) {
+        mQuizes = (ArrayList<Quiz>) mDataHelper.getQuizes(category, group);
+        QuizFragment quizFragment = QuizFragment_.builder().mQuizes(mQuizes).mPos(0).build();
+        mFragmentManager.beginTransaction().addToBackStack(null).replace(R.id.flContainer, quizFragment).commit();
     }
 
     @Override
@@ -201,25 +195,5 @@ public class MainActivity extends AppCompatActivity implements ExerciseAdapter.o
         SharedPreferences.Editor editor = mSharePreference.edit();
         editor.putBoolean(QuizFragment.KEY_FLAG, false);
         editor.commit();
-    }
-
-    @Override
-    public void onFragmentInteraction(int position, int choice) {
-        quizes.get(position).setChoosenQuestion(choice);
-        QuizFragment quizFragment = QuizFragment_.builder().mQuizes(quizes).mPos(position).build();
-        mFragmentManager.beginTransaction().replace(R.id.flContainer, quizFragment).commit();
-        Log.i("fragment", mFragmentManager.getBackStackEntryCount() + "");
-    }
-
-    @Override
-    public void onAddDialogPositiveClick(DialogFragment dialog) {
-        QuizFragment quizFragment = QuizFragment_.builder().mQuizes(quizes).mPos(0).mIsSubmit(true).build();
-        mFragmentManager.beginTransaction().replace(R.id.flContainer, quizFragment).commit();
-    }
-
-    @Override
-    public void onAddDialogNegativeClick(DialogFragment dialog) {
-        setFlag();
-        getFragmentManager().popBackStack();
     }
 }

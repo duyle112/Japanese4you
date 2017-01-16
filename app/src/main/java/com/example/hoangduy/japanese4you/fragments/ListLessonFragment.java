@@ -14,12 +14,18 @@ import android.widget.ImageView;
 
 import com.example.hoangduy.japanese4you.R;
 import com.example.hoangduy.japanese4you.adapters.WordsAdapter;
+import com.example.hoangduy.japanese4you.database.DataHelper;
 import com.example.hoangduy.japanese4you.decorations.GridViewDecoration;
+import com.example.hoangduy.japanese4you.models.Example;
+import com.example.hoangduy.japanese4you.models.Word;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @EFragment(R.layout.fragment_list_lesson)
@@ -33,7 +39,10 @@ public class ListLessonFragment extends Fragment {
 
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayout;
-
+    private List<Word> mWords;
+    private DataHelper mDataHelper;
+    private List<Word> mGroupWord;
+    private List<String> mTitles;
     private OnFragmentInteractionListener mListener;
 
     public ListLessonFragment() {
@@ -42,40 +51,92 @@ public class ListLessonFragment extends Fragment {
 
     @AfterViews
     public void init() {
+        openDb();
+        mWords = mDataHelper.getWords();
+        mTitles = new ArrayList<>();
+        mGroupWord = new ArrayList<>();
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
         img.setVisibility(View.INVISIBLE);
-        final FragmentManager fragmentManager =getFragmentManager();
-        String[] strings = new String[]{""};
-        switch (mPos) {
-            case 0:
-                strings = getResources().getStringArray(R.array.lessonsVoca);
-                break;
-            case 1:
-                strings = getResources().getStringArray(R.array.lessonsVoca1);
-                break;
-            case 2:
-                strings = getResources().getStringArray(R.array.lessonsVoca2);
-                break;
-            case 3:
-                strings = getResources().getStringArray(R.array.lessonsVoca3);
-                break;
-            case 4:
-                strings = getResources().getStringArray(R.array.lessonsVoca4);
-                break;
-        }
-        mAdapter = new WordsAdapter(strings);
-        mLessonRecycler.setLayoutManager(new GridLayoutManager(getContext(),2));
+        final FragmentManager fragmentManager = getFragmentManager();
+        mGroupWord = filter(mPos);
+        addTitle();
+        mAdapter = new WordsAdapter(mTitles);
+        mLessonRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         mLessonRecycler.setAdapter(mAdapter);
         mLessonRecycler.addItemDecoration(new GridViewDecoration(20));
-        final String[] finalStrings = strings;
         mLessonRecycler.addOnItemTouchListener(new RecyclerTouchListener(getContext(), mLessonRecycler, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                WordDetailFragment wordDetailFragment = WordDetailFragment_.builder().build();
-                fragmentManager.beginTransaction().replace(R.id.flContainerSub,wordDetailFragment).addToBackStack(null).commit();
+                WordDetailFragment wordDetailFragment = WordDetailFragment_.builder()
+                        .mWords((ArrayList<Word>) mGroupWord)
+                        .mCount(mGroupWord.size())
+                        .mPos(position)
+                        .build();
+                fragmentManager.beginTransaction().replace(R.id.flContainerSub, wordDetailFragment).addToBackStack(null).commit();
             }
         }));
+    }
+
+    public List<Example> getExamples(int id) {
+        return mDataHelper.getExamples(id);
+    }
+
+    public void addTitle() {
+        for (int i = 0; i < mGroupWord.size(); i++) {
+            mTitles.add(mGroupWord.get(i).getKanji());
+        }
+    }
+
+    public List<Word> filter(int level) {
+        List<Word> words = new ArrayList<>();
+        switch (level) {
+            case 0:
+                for (int i = 0; i < mWords.size(); i++) {
+                    if (mWords.get(i).getCategory().equals("5")) {
+                        words.add(mWords.get(i));
+                    }
+                }
+                break;
+
+            case 1:
+                for (int i = 0; i < mWords.size(); i++) {
+                    if (mWords.get(i).getCategory().equals("4")) {
+                        words.add(mWords.get(i));
+                    }
+                }
+                break;
+
+            case 2:
+                for (int i = 0; i < mWords.size(); i++) {
+                    if (mWords.get(i).getCategory().equals("3")) {
+                        words.add(mWords.get(i));
+                    }
+                }
+                break;
+
+            case 3:
+                for (int i = 0; i < mWords.size(); i++) {
+                    if (mWords.get(i).getCategory().equals("2")) {
+                        words.add(mWords.get(i));
+                    }
+                }
+                break;
+
+            case 4:
+                for (int i = 0; i < mWords.size(); i++) {
+                    if (mWords.get(i).getCategory().equals("1")) {
+                        words.add(mWords.get(i));
+                    }
+                }
+                break;
+        }
+        return words;
+    }
+
+    public void openDb() {
+        mDataHelper = new DataHelper(getContext(), "", null, 1);
+        mDataHelper.openDataBase();
     }
 
 

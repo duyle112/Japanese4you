@@ -162,4 +162,5 @@
     <string name="dialog_exit_btnPositive_text">Ok</string>
     <string name="dialog_exit_btnNegative_text">Cancel</string>
     <string name="dialog_result_title">Congratulation!!!You did try</string>
+    <string name="dialog_alert_tvMessage_text">You have not completed this exam yet.Are you sure you want to submit?</string>
 </resources>

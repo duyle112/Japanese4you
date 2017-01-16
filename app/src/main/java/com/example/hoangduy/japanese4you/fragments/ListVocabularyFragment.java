@@ -21,6 +21,7 @@ import org.androidannotations.annotations.ViewById;
 public class ListVocabularyFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private static final String TITLE = "Vocabulary";
 
     public ListVocabularyFragment() {
         // Required empty public constructor
@@ -32,12 +33,13 @@ public class ListVocabularyFragment extends Fragment {
     @ViewById(R.id.tabLayout)
     TabLayout mTabLayout;
 
+
     @AfterViews
     public void init() {
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
         TextView textview = (TextView) toolbar.findViewById(R.id.tvTitle);
-        textview.setText("Vocabulary");
+        textview.setText(TITLE);
         img.setVisibility(View.INVISIBLE);
         onCreateTabLayout();
         ListLessonFragment listLessonFragment = ListLessonFragment_.builder().mPos(0).build();

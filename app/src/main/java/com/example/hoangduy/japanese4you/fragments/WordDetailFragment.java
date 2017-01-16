@@ -9,10 +9,11 @@ import android.widget.ImageView;
 
 import com.example.hoangduy.japanese4you.R;
 import com.example.hoangduy.japanese4you.adapters.VocabularyAdapter;
-import com.example.hoangduy.japanese4you.models.Sentences;
+import com.example.hoangduy.japanese4you.models.Word;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
@@ -23,6 +24,15 @@ public class WordDetailFragment extends Fragment {
 
     @ViewById(R.id.WordViewpager)
     ViewPager mViewpager;
+
+    @FragmentArg
+    ArrayList<Word> mWords;
+
+    @FragmentArg
+    int mPos;
+
+    @FragmentArg
+    int mCount;
 
     @AfterViews
     public void init() {
@@ -35,13 +45,8 @@ public class WordDetailFragment extends Fragment {
             }
         });
         img.setVisibility(View.VISIBLE);
-        ArrayList<Sentences> sentences = new ArrayList<>();
-        sentences.add(new Sentences("山本は席から飛び上がった", "yamamoto wa seki kara tobiagatta.", "Yamamoto sprang up from his seat."));
-        sentences.add(new Sentences("宿題は明日の夜仕上げよう。", "shukudai wa ashita no yoru shiageyou", "I’ll finish the homework tomorrow night."));
-        sentences.add(new Sentences("山本は席から飛び上がった", "yamamoto wa seki kara tobiagatta.", "Yamamoto sprang up from his seat."));
-        sentences.add(new Sentences("宿題は明日の夜仕上げよう。", "shukudai wa ashita no yoru shiageyou", "I’ll finish the homework tomorrow night."));
-        sentences.add(new Sentences("宿題は明日の夜仕上げよう。", "shukudai wa ashita no yoru shiageyou", "I’ll finish the homework tomorrow night."));
-        mViewpager.setAdapter(new VocabularyAdapter(getFragmentManager(), sentences));
+        mViewpager.setAdapter(new VocabularyAdapter(getContext(),getFragmentManager(),mWords,mCount));
+        mViewpager.setCurrentItem(mPos);
     }
 
 

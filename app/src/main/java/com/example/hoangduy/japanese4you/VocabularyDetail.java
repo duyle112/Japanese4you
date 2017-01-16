@@ -3,7 +3,6 @@ package com.example.hoangduy.japanese4you;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
-import com.example.hoangduy.japanese4you.adapters.VocabularyAdapter;
 import com.example.hoangduy.japanese4you.models.Sentences;
 
 import org.androidannotations.annotations.AfterViews;
@@ -26,7 +25,7 @@ public class VocabularyDetail extends AppCompatActivity {
         sentences.add(new Sentences("山本は席から飛び上がった","yamamoto wa seki kara tobiagatta.","Yamamoto sprang up from his seat."));
         sentences.add(new Sentences("宿題は明日の夜仕上げよう。","shukudai wa ashita no yoru shiageyou","I’ll finish the homework tomorrow night."));
         sentences.add(new Sentences("宿題は明日の夜仕上げよう。","shukudai wa ashita no yoru shiageyou","I’ll finish the homework tomorrow night."));
-        mViewPager.setAdapter(new VocabularyAdapter(getSupportFragmentManager(),sentences));
+      //  mViewPager.setAdapter(new VocabularyAdapter(getSupportFragmentManager(),sentences));
     }
 
 }
