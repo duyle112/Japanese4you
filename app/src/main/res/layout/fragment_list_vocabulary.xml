@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:tabGravity="fill"
+            app:tabIndicatorColor="@color/colorToolbarBg"
             app:tabMode="fixed" />
     </android.support.design.widget.AppBarLayout>
 

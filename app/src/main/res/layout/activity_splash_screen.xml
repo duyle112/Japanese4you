@@ -4,17 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hoangduy.japanese4you.SplashScreen">
 
-    <ImageView
-        android:src="@drawable/animals"
+    <TextView
+        android:textStyle="italic"
+        android:textSize="@dimen/splash_screen_tv_fontsize"
+        android:textColor="@color/colorToolbarBg"
+        android:text="@string/splash_screen_tv_name"
+        android:gravity="center"
+        android:layout_below="@+id/imgBg"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imgBg"
+        android:src="@drawable/lanscape"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_height="match_parent" />
+        android:layout_width="@dimen/splash_screen_width"
+        android:layout_height="@dimen/splash_screen_height" />
 
 </RelativeLayout>

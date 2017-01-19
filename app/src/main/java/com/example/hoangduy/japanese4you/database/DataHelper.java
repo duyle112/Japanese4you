@@ -25,7 +25,7 @@ import java.util.List;
 public class DataHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 3;
-    private static final String DATABASE_NAME = "japanesev04.db";
+    private static final String DATABASE_NAME = "japanesev05.db";
     private static final String DB_PATH_SUFFIX = "/databases/";
     private static final String TABLE_WORD = "word";
     static Context mContext;
@@ -41,7 +41,7 @@ public class DataHelper extends SQLiteOpenHelper {
     private static final String ROMANJISENTENCE = "romanjisentence";
     private static final String ENGSENTENCE = "engsentence";
     private static final String TABLE_QUIZ = "quiz";
-    private static final String TABLE_EXERCISE="exercise";
+    private static final String TABLE_EXERCISE = "exercise";
 
     private static String getDatabasePath() {
         return mContext.getApplicationInfo().dataDir + DB_PATH_SUFFIX
@@ -94,7 +94,7 @@ public class DataHelper extends SQLiteOpenHelper {
                 String answerC = cursor.getString(4);
                 String answerD = cursor.getString(5);
                 int rightAnswer = cursor.getInt(6);
-                quizes.add(new Quiz(id,question,answerA,answerB,answerC,answerD,5,rightAnswer));
+                quizes.add(new Quiz(id, question, answerA, answerB, answerC, answerD, 5, rightAnswer));
             } while (cursor.moveToNext());
         }
         return quizes;
@@ -102,7 +102,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     public List<Exercise> getExercises(String category) {
         List<Exercise> exercises = new ArrayList<>();
-        String selectQuery = "SELECT * FROM "+TABLE_EXERCISE+" WHERE category='"+category+"'";
+        String selectQuery = "SELECT * FROM " + TABLE_EXERCISE + " WHERE category='" + category + "'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -110,8 +110,10 @@ public class DataHelper extends SQLiteOpenHelper {
                 int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String cate = cursor.getString(2);
-                int  group = cursor.getInt(3);
-                exercises.add(new Exercise(id,name,cate,group));
+                int group = cursor.getInt(3);
+                int testTaken=cursor.getInt(4);
+                String lastscore=cursor.getString(5);
+                exercises.add(new Exercise(id, name, cate, group,testTaken,lastscore));
             } while (cursor.moveToNext());
         }
         return exercises;
@@ -119,7 +121,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     public List<Exercise> getAllExercises() {
         List<Exercise> exercises = new ArrayList<>();
-        String selectQuery = "SELECT * FROM "+TABLE_EXERCISE;
+        String selectQuery = "SELECT * FROM " + TABLE_EXERCISE;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
@@ -127,11 +129,59 @@ public class DataHelper extends SQLiteOpenHelper {
                 int id = cursor.getInt(0);
                 String name = cursor.getString(1);
                 String cate = cursor.getString(2);
-                int  group = cursor.getInt(3);
-                exercises.add(new Exercise(id,name,cate,group));
+                int group = cursor.getInt(3);
+                int testTaken=cursor.getInt(4);
+                String lastscore=cursor.getString(5);
+                exercises.add(new Exercise(id, name, cate, group,testTaken,lastscore));
             } while (cursor.moveToNext());
         }
         return exercises;
+    }
+
+    public List<Exercise> getTakenExercise() {
+        List<Exercise> exercises = new ArrayList<>();
+        String selectQuery = "SELECT * FROM " + TABLE_EXERCISE + " WHERE testtaken >0";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String cate = cursor.getString(2);
+                int group = cursor.getInt(3);
+                int testTaken=cursor.getInt(4);
+                String lastscore=cursor.getString(5);
+                exercises.add(new Exercise(id, name, cate, group,testTaken,lastscore));
+            } while (cursor.moveToNext());
+        }
+        return exercises;
+    }
+
+    public List<Word> getWordFavorited() {
+        List<Word> words = new ArrayList<>();
+        String selectQuery = "SELECT  * FROM " + TABLE_WORD + " WHERE isFavorite=1";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int idword = cursor.getInt(0);
+                String kana = cursor.getString(1);
+                String romanji = cursor.getString(2);
+                String kanji = cursor.getString(3);
+                String type = cursor.getString(4);
+                String meaning = cursor.getString(5);
+                String category = cursor.getString(6);
+                int favorite = cursor.getInt(7);
+                words.add(new Word(idword, kana, kanji, romanji, type, meaning, category, favorite));
+            } while (cursor.moveToNext());
+        }
+        return words;
+    }
+
+    public void updateProgress(int id,String lastscore) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String updateQuerry = "UPDATE " + TABLE_EXERCISE + " SET lastscore= " + lastscore +",testtaken=testtaken+1"+ " WHERE " + TABLE_EXERCISE + ".id=" + id;
+        db.execSQL(updateQuerry);
     }
 
 //    public long insertWord(Word word) {

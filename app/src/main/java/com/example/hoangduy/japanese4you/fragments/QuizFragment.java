@@ -11,7 +11,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.hoangduy.japanese4you.R;
 import com.example.hoangduy.japanese4you.adapters.QuizAdapter;
+import com.example.hoangduy.japanese4you.database.DataHelper;
 import com.example.hoangduy.japanese4you.models.Quiz;
 
 import org.androidannotations.annotations.AfterViews;
@@ -50,6 +50,9 @@ public class QuizFragment extends Fragment implements QuestionFragment.OnFragmen
     @FragmentArg("pos")
     int mPos;
 
+    @FragmentArg("id")
+    int mId;
+
     @FragmentArg("flag")
     boolean mIsSubmit;
 
@@ -61,13 +64,16 @@ public class QuizFragment extends Fragment implements QuestionFragment.OnFragmen
     private int mMin = 4;
     private int mSecond = 60;
     private static final String mTime = "05:00";
+    private DataHelper mDataHelper;
 
     @AfterViews
     public void init() {
-        Log.i("abcd", getFragmentManager().getBackStackEntryCount() + "");
         setFlag();
+        mDataHelper = new DataHelper(getContext(), "", null, 1);
+        mDataHelper.openDataBase();
         Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         ImageView img = (ImageView) toolbar.findViewById(R.id.imgBack);
+        img.setVisibility(View.VISIBLE);
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -223,6 +229,7 @@ public class QuizFragment extends Fragment implements QuestionFragment.OnFragmen
 
     public void showResultDialog() {
         mHandlerCountdown.removeCallbacksAndMessages(null);
+        mDataHelper.updateProgress(mId,(int)calculateAccurateQuestion()+"");
         ResultDialogFragment dialogFragment = ResultDialogFragment.newInstance(calculateAccurateQuestion(), getRightQuestionCount());
         dialogFragment.setCallback(this);
         dialogFragment.setCancelable(false);
@@ -251,7 +258,6 @@ public class QuizFragment extends Fragment implements QuestionFragment.OnFragmen
 
     @Override
     public void onAddDialogPositiveClick(DialogFragment dialog) {
-        Log.i("abc", "abc");
         mAdapter = new QuizAdapter(getFragmentManager(), mQuizes, true, this);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(0);

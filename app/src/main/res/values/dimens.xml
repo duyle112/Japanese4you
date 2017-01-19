@@ -37,4 +37,16 @@
     <dimen name="dialog_result_title_fontsize">15sp</dimen>
     <dimen name="dialog_result_title_height">50dp</dimen>
     <dimen name="dialog_alert_tv_fontsize">15sp</dimen>
+    <dimen name="row_ranking_tvExerciseName_fontsize">25sp</dimen>
+    <dimen name="row_ranking_tvExerciseName_paddingLeft">20dp</dimen>
+    <dimen name="row_ranking_tvtextTaken_fontsize">60sp</dimen>
+    <dimen name="row_ranking_tvDescription_fontsize">15sp</dimen>
+    <dimen name="splash_screen_width">300dp</dimen>
+    <dimen name="splash_screen_height">300dp</dimen>
+    <dimen name="splash_screen_tv_fontsize">25sp</dimen>
+    <dimen name="activity_demo_intent_btn_width">100dp</dimen>
+    <dimen name="row_alarm_time_fontsize">20sp</dimen>
+    <dimen name="row_alarm_dayofweek_fontsize">15sp</dimen>
+    <dimen name="row_day_day_fontsize">15sp</dimen>
+    <dimen name="settings_fragment_tv_fontsize">20sp</dimen>
 </resources>

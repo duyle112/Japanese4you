@@ -35,10 +35,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mTvExercise.setText(mExercises.get(position).getName());
+        tryAgain(holder,position);
         holder.mTvReadmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onReadmore(mExercises.get(position).getCategory(),mExercises.get(position).getGroup());
+                mListener.onReadmore(mExercises.get(position).getId(),mExercises.get(position).getCategory(),mExercises.get(position).getGroup());
             }
         });
     }
@@ -48,8 +49,14 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         return mExercises.size();
     }
 
+    public void tryAgain(ViewHolder holder,int position) {
+        if (mExercises.get(position).getTesttaken()>0) {
+            holder.mTvReadmore.setText("Try Again");
+        }
+    }
+
     public interface onFragmentTransaction {
-        void onReadmore(String category,int group);
+        void onReadmore(int id,String category,int group);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -18,7 +18,10 @@
         </activity>
         <activity android:name=".VocabularyDetail_" />
         <activity android:name=".QuizActivity_" />
-        <activity android:name=".Tutorials_"></activity>
+        <activity android:name=".Tutorials_" />
+        <activity android:name=".ScheduleActivity"></activity>
+        <activity android:name=".ClockActivity"></activity>
+        <service android:name=".service.MyService"></service>
     </application>
 
 </manifest>

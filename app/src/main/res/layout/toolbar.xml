@@ -24,8 +24,16 @@
             android:id="@+id/tvTitle"
             android:textColor="@android:color/white"
             android:layout_weight="4"
+            android:gravity="center"
             android:textSize="@dimen/activity_vocaDetail_text_fontsize"
             android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:id="@+id/imgClock"
+            android:src="@drawable/ic_alarm_add_green_700_48dp"
             android:layout_height="match_parent" />
 
 

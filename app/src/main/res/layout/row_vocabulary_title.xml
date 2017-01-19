@@ -13,6 +13,7 @@
     android:gravity="center"
     android:id="@+id/tvTitle"
     android:text="右"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
 </android.support.v7.widget.CardView>

@@ -104,7 +104,7 @@
         <item>きのうのパーティー　_______ なにをしましたか</item>
         <item>ぎょうざをたべました。それから、さしみ　_______ たべました</item>
     </string-array>
-    
+
     <string-array name="answerA">
         <item>へ</item>
         <item>は</item>
@@ -163,4 +163,21 @@
     <string name="dialog_exit_btnNegative_text">Cancel</string>
     <string name="dialog_result_title">Congratulation!!!You did try</string>
     <string name="dialog_alert_tvMessage_text">You have not completed this exam yet.Are you sure you want to submit?</string>
+    <string name="row_ranking_tvTestTaken_name">Tests Taken</string>
+    <string name="row_ranking_tvLastScore_name">Last Score</string>
+    <string name="splash_screen_tv_name">sakura JP</string>
+    <string-array name="day">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Satusday</item>
+    </string-array>
+
+    <string name="dialog_repeat_tv_title">Repeat</string>
+    <string name="dialog_repeat_btn_name">Ok</string>
+    <string name="activity_clock_btn_name">Done</string>
+    <string name="settings_fragment_tv_name">Study Schedule</string>
 </resources>
