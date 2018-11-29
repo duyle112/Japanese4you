@@ -1,3 +1,183 @@
 <resources>
     <string name="app_name">Japanese4You</string>
+    <string name="menu_title">Title</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tutorial_description">Learn about Vocabulary</string>
+    <string-array name="categories">
+        <item>N5 Basic</item>
+        <item>N5 Kanji</item>
+        <item>N5 Grammar</item>
+        <item>N5 Reading</item>
+    </string-array>
+    <string name="skip_tutorial">Skip</string>
+    <string name="activity_vocaDetail_textKana_name">Kana:  </string>
+    <string name="activity_vocaDetail_textRomanji_name">Romanji:   </string>
+    <string name="activity_vocaDetail_textMeaningandType_name">Type and Meaning</string>
+    <string name="activity_vocaDetail_textExample_name">Examples</string>
+    <string name="activity_vocaDetail_textType_name">Type</string>
+    <string name="activity_vocaDetail_textMeaning_name">Meaning</string>
+    <string-array name="lessonsVoca">
+        <item>右</item>
+        <item>夜</item>
+        <item>取る</item>
+        <item>止まる</item>
+        <item>狭い</item>
+        <item>左</item>
+        <item>辺</item>
+        <item>熱い</item>
+        <item>飛ぶ</item>
+        <item>立つ</item>
+    </string-array>
+
+    <string-array name="lessonsVoca1">
+        <item>右</item>
+        <item>夜</item>
+        <item>取る</item>
+        <item>止まる</item>
+        <item>狭い</item>
+        <item>左</item>
+        <item>辺</item>
+        <item>熱い</item>
+        <item>飛ぶ</item>
+        <item>立つ</item>
+    </string-array>
+
+    <string-array name="lessonsVoca2">
+        <item>右</item>
+        <item>夜</item>
+        <item>取る</item>
+        <item>止まる</item>
+        <item>狭い</item>
+        <item>左</item>
+        <item>辺</item>
+        <item>熱い</item>
+        <item>飛ぶ</item>
+        <item>立つ</item>
+    </string-array>
+
+    <string-array name="lessonsVoca3">
+        <item>右</item>
+        <item>夜</item>
+        <item>取る</item>
+        <item>止まる</item>
+        <item>狭い</item>
+        <item>左</item>
+        <item>辺</item>
+        <item>熱い</item>
+        <item>飛ぶ</item>
+        <item>立つ)</item>
+    </string-array>
+
+    <string-array name="lessonsVoca4">
+        <item>右</item>
+        <item>夜</item>
+        <item>取る</item>
+        <item>止まる</item>
+        <item>狭い</item>
+        <item>左</item>
+        <item>辺</item>
+        <item>熱い</item>
+        <item>飛ぶ</item>
+        <item>立つ)</item>
+    </string-array>
+
+    <string name="N5basic">JLPT N5 – Basic (110)</string>
+    <string name="N5Kanji">JLPT N5 Kanji test (20)</string>
+    <string name="N5Grammar">JLPT N5 grammar test (26)</string>
+    <string name="N5Reading">JLPT N5 reading test (11)</string>
+    <string name="N5Vocabulary">JLPT N5 vocabulary test (24)</string>
+
+    <string name="readmore">Read More</string>
+    <string name="fragment_question_tvTimeleft">time left</string>
+
+    <string-array name="questions">
+        <item>まいにちしんぶん　_______ 読みます</item>
+        <item>どの人　_______ たなださんですか</item>
+        <item>ナイフ　_______ パンをきりました</item>
+        <item>すみません、お茶　_______ ください</item>
+        <item>きのうのパーティー　_______ なにをしましたか</item>
+        <item>ぎょうざをたべました。それから、さしみ　_______ たべました</item>
+        <item>ナイフ　_______ パンをきりました</item>
+        <item>すみません、お茶　_______ ください</item>
+        <item>きのうのパーティー　_______ なにをしましたか</item>
+        <item>ぎょうざをたべました。それから、さしみ　_______ たべました</item>
+    </string-array>
+
+    <string-array name="answerA">
+        <item>へ</item>
+        <item>は</item>
+        <item>で</item>
+        <item>が</item>
+        <item>へ</item>
+        <item>を</item>
+        <item>が</item>
+        <item>に</item>
+        <item>から</item>
+        <item>に</item>
+    </string-array>
+
+    <string-array name="answerB">
+        <item>へ</item>
+        <item>は</item>
+        <item>で</item>
+        <item>が</item>
+        <item>へ</item>
+        <item>を</item>
+        <item>が</item>
+        <item>に</item>
+        <item>から</item>
+        <item>に</item>
+    </string-array>
+
+    <string-array name="answerC">
+        <item>へ</item>
+        <item>は</item>
+        <item>で</item>
+        <item>が</item>
+        <item>へ</item>
+        <item>を</item>
+        <item>が</item>
+        <item>に</item>
+        <item>から</item>
+        <item>に</item>
+    </string-array>
+
+    <string-array name="answerD">
+        <item>へ</item>
+        <item>は</item>
+        <item>で</item>
+        <item>が</item>
+        <item>へ</item>
+        <item>を</item>
+        <item>が</item>
+        <item>に</item>
+        <item>から</item>
+        <item>に</item>
+    </string-array>
+
+    <string name="fragment_example_text">EXAMPLE SENTENCES</string>
+    <string name="dialog_ext_tvMessage_text">Are you sure you want to exit?</string>
+    <string name="dialog_exit_btnPositive_text">Ok</string>
+    <string name="dialog_exit_btnNegative_text">Cancel</string>
+    <string name="dialog_result_title">Congratulation!!!You did try</string>
+    <string name="dialog_alert_tvMessage_text">You have not completed this exam yet.Are you sure you want to submit?</string>
+    <string name="row_ranking_tvTestTaken_name">Tests Taken</string>
+    <string name="row_ranking_tvLastScore_name">Last Score</string>
+    <string name="splash_screen_tv_name">sakura JP</string>
+    <string-array name="day">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Satusday</item>
+    </string-array>
+
+    <string name="dialog_repeat_tv_title">Repeat</string>
+    <string name="dialog_repeat_btn_name">Ok</string>
+    <string name="activity_clock_btn_name">Done</string>
+    <string name="settings_fragment_tv_name">Study Schedule</string>
 </resources>

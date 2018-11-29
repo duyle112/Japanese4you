@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#00FF66"
+    android:layout_height="wrap_content">
+    <ProgressBar
+        android:layout_below="@+id/tvTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="120dp"
+        android:progress="100"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/style_cicular2"
+        android:max="100"
+        android:layout_height="120dp" />
+
+    <ProgressBar
+        android:layout_below="@+id/tvTitle"
+        android:id="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="120dp"
+        android:progress="70"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/style_circular"
+        android:max="100"
+        android:layout_height="120dp" />
+
+    <TextView
+        android:text="70%"
+        android:id="@+id/tvPercent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        style="@style/dialog_result_tvTitle_styles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

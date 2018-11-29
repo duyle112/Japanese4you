@@ -1,0 +1,23 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hoangduy.japanese4you.fragments.TypeTest">
+
+    <!-- TODO: Update blank fragment layout -->
+   <ImageView
+       android:id="@+id/imgIcon"
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/fragment_typetut_image_height" />
+
+    <TextView
+        android:text="@string/tutorial_description"
+        android:layout_below="@+id/imgIcon"
+        android:gravity="center"
+        android:id="@+id/tvDescription"
+        android:textColor="@color/colorToolbarBg"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/activity_tutorial_description_fontsize"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

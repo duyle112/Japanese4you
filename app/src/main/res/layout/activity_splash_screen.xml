@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.example.hoangduy.japanese4you.SplashScreen">
+
+    <TextView
+        android:textStyle="italic"
+        android:textSize="@dimen/splash_screen_tv_fontsize"
+        android:textColor="@color/colorToolbarBg"
+        android:text="@string/splash_screen_tv_name"
+        android:gravity="center"
+        android:layout_below="@+id/imgBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/imgBg"
+        android:src="@drawable/lanscape"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/splash_screen_width"
+        android:layout_height="@dimen/splash_screen_height" />
+
+</RelativeLayout>

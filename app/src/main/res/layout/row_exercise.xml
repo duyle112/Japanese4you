@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_exercise_cardview_height"
+    android:layout_marginBottom="@dimen/cardview_margin_bot"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    app:cardCornerRadius="@dimen/cardview_corner_radius">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:paddingLeft="@dimen/row_exercise_tvExercise_paddingLeft"
+            android:id="@+id/tvExercise"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/row_exercise_tvTitle_fontsize"
+            android:layout_weight="2"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/test_fragment_tv_fontsize" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvReadmore"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/colorBackgroundText"
+                android:gravity="bottom|right"
+                android:paddingRight="@dimen/row_exercise_tv_padding"
+                android:text="@string/readmore"
+                android:textColor="@color/colorToolbarBg"
+                android:textSize="@dimen/test_fragment_tv_fontsize" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
